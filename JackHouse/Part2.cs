@@ -9,7 +9,7 @@ namespace JackHouse
             "А это пшеница,",
             "Которая в темном чулане хранится",
             "В доме,",
-            "Который построил Джек."
+            "Который построил Джек.\r\n"
         ];
         public void AddPart(ImmutableList<string> strings) => Poem.AddRange(strings);
     }

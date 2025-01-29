@@ -10,11 +10,8 @@ namespace Librarian
 
             var isRunning = true;
             var dict = new ConcurrentDictionary<string, int>();
-            //var task1 = new Task(() => CalculateBooksPercent(dict));
-            //task1.Start();
+            Task.Run(() => CalculateBooksPercent(dict));
 
-            Parallel.Invoke(
-                () => CalculateBooksPercent(dict));
             while (isRunning)
             {
                 Console.WriteLine("1 - добавить книгу; 2 - вывести список непрочитанного; 3 - выйти");
@@ -38,19 +35,21 @@ namespace Librarian
 
         private static void CalculateBooksPercent(ConcurrentDictionary<string, int> dictionary)
         {
-            if (!dictionary.IsEmpty)
+            while (true)
             {
-                foreach (var keyValue in dictionary)
+                if (!dictionary.IsEmpty)
                 {
-                    dictionary.AddOrUpdate(keyValue.Key, keyValue.Value, (key, oldValue) => oldValue + 1);
-                    var val = dictionary.TryGetValue(keyValue.Key, out var value);
-                    if (value == 100)
+                    foreach (var keyValue in dictionary)
                     {
-                        dictionary.TryRemove(keyValue);
+                        dictionary.AddOrUpdate(keyValue.Key, keyValue.Value, (key, oldValue) => oldValue + 1);
+                        _ = dictionary.TryGetValue(keyValue.Key, out var value);
+                        if (value == 100)
+                        {
+                            _ = dictionary.TryRemove(keyValue.Key, out var value1);
+                        }
                     }
                 }
             }
-            Task.Delay(1000);
         }
 
         private static void ShowBooks(ConcurrentDictionary<string, int> dictionary)
