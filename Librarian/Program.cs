@@ -47,6 +47,7 @@ namespace Librarian
                         {
                             _ = dictionary.TryRemove(keyValue.Key, out var value1);
                         }
+                        Thread.Sleep(1000);
                     }
                 }
             }
