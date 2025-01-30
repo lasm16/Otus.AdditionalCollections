@@ -4,17 +4,22 @@ namespace JackHouse
 {
     internal class Part6
     {
-        public ImmutableList<string> Poem = 
-        [
-            "А это корова безрогая,",
-            "Лягнувшая старого пса без хвоста,",
-            "Который за шиворот треплет кота,",
-            "Который пугает и ловит синицу,",
-            "Которая часто ворует пшеницу,",
-            "Которая в темном чулане хранится",
-            "В доме,",
-            "Который построил Джек.\r\n"
-        ];
-        public void AddPart(ImmutableList<string> strings) => Poem.AddRange(strings);
+        public ImmutableList<string> Poem = [];
+        public ImmutableList<string> AddPart(ImmutableList<string> strings)
+        {
+            var poem = new List<string>()
+            {
+                "А это корова безрогая,",
+                "Лягнувшая старого пса без хвоста,",
+                "Который за шиворот треплет кота,",
+                "Который пугает и ловит синицу,",
+                "Которая часто ворует пшеницу,",
+                "Которая в темном чулане хранится",
+                "В доме,",
+                "Который построил Джек.\r\n"
+            };
+            Poem = strings.AddRange(poem);
+            return Poem;
+        }
     }
 }

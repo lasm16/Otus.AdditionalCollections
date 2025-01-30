@@ -17,15 +17,15 @@ namespace JackHouse
             var part8 = new Part8();
             var part9 = new Part9();
 
-            part1.AddPart(poem);
-            part2.AddPart(part1.Poem);
-            part3.AddPart(part2.Poem);
-            part4.AddPart(part3.Poem);
-            part5.AddPart(part4.Poem);
-            part6.AddPart(part5.Poem);
-            part7.AddPart(part6.Poem);
-            part8.AddPart(part7.Poem);
-            part9.AddPart(part8.Poem);
+            poem = part1.AddPart(poem);
+            poem = part2.AddPart(poem);
+            poem = part3.AddPart(poem);
+            poem = part4.AddPart(poem);
+            poem = part5.AddPart(poem);
+            poem = part6.AddPart(poem);
+            poem = part7.AddPart(poem);
+            poem = part8.AddPart(poem);
+            poem = part9.AddPart(poem);
 
             ShowLines(part1.Poem);
             ShowLines(part2.Poem);
